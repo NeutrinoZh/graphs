@@ -20,6 +20,7 @@ add_executable(${PROJECT_NAME}
 
     ./src/mvc/canvas/canvas-view.cpp
     ./src/mvc/canvas/canvas-model.cpp
+    ./src/mvc/canvas/canvas-controller.cpp
 )
 
 include_directories(./src/)
