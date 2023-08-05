@@ -3,6 +3,7 @@
 #include <vector>
 #include <list>
 #include <map>
+#include <unordered_map>
 #include <algorithm>
 #include <bitset>
 #include <optional>
@@ -12,6 +13,9 @@
 
 #include <glm/glm.hpp>
 #include <glm/ext/scalar_constants.hpp>
+
+#define GLM_ENABLE_EXPERIMENTAL
+#include <glm/gtx/hash.hpp>
 
 #include <Fl/Fl.H>
 #include <Fl/Fl_Window.H>
@@ -31,6 +35,9 @@ using glm::ivec2;
 using glm::ivec3;
 
 using std::string;
+using std::vector;
+using std::map;
+using std::unordered_map;
 
 constexpr float PI = glm::pi<float>();
 

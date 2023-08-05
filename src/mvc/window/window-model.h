@@ -28,5 +28,5 @@ namespace app {
     // reactions
         action rc_title;
         action rc_size;
-    };
+  };
 }

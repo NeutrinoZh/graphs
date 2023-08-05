@@ -1,15 +1,9 @@
-#include "mvc/window/window-view.h"
+#include "mvc/window/window-object.h"
 
 using namespace app;
 
 int main(int argc, char** argv) {
     logger()->info() << "Application launch";
-
-    auto window_model = new app::WindowModel();
-    window_model->sTitle("Triangulation");
-    window_model->sSize({800, 600});
-
-    auto window_view = new app::WindowView(window_model);
-    
+    WindowObject window = WindowObject();
     return Fl::run();
 }

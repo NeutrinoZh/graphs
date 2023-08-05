@@ -1,3 +1,4 @@
+#pragma once
 #include "../logger/Logger.h"
 
 namespace app {
