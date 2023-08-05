@@ -16,7 +16,7 @@ add_executable(${PROJECT_NAME}
     ./src/logger/LoggerMessage_1_of_2.cpp
     ./src/logger/LoggerMessage_2_of_2.cpp
 
-    ./src/window/window.cpp
+    ./src/mvc/window/window-view.cpp
 )
 
 include_directories(./src/)

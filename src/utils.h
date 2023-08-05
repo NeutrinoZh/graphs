@@ -33,3 +33,19 @@ using glm::ivec3;
 using std::string;
 
 constexpr float PI = glm::pi<float>();
+
+namespace app {
+    class action {
+    private:
+        std::vector<std::function<void()>> m_funcs;
+    public:
+        void operator+=(std::function<void()> func) {
+            m_funcs.push_back(func);
+        }
+
+        void operator()() {
+            for (auto& f : m_funcs)
+                f();
+        }
+    };
+}
