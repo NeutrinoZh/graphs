@@ -38,6 +38,12 @@ namespace app {
                     this->m_message << (value ? "true" : "false");
                     return *this;
                 }
+
+                Message operator<<(ivec2 _vec) {
+                    this->m_last = false;
+                    this->m_message << "{" << _vec.x << ";" << _vec.y << "}";
+                    return *this;
+                }
             };
         public:
             Logger(void (*config)(LoggerInitSettings* self));

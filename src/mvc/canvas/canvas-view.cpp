@@ -17,8 +17,10 @@ namespace app {
     }
 
     void CanvasView::draw() {
+        // draw canvas
         fl_rectf(x(), y(), w(), h(), FL_WHITE);
 
+        // draw points
         for (auto pair : *m_model) {
             auto point = pair.first;
             if (m_hover_point == point)
@@ -32,6 +34,25 @@ namespace app {
                 R*2, R*2, 0, 360
             );
         }
+
+        // draw lines
+        fl_color(FL_BLACK);
+        for (auto node : *m_model)
+            for (uint i = 0; i < node.second.size(); ++i)
+                fl_line(
+                    x() + node.first->x + R,
+                    y() + node.first->y + R, 
+                    x() + node.second[i]->x + R, 
+                    y() + node.second[i]->y + R
+                );
+        
+        // draw line to cursor
+        if (m_select_point)
+            fl_line(
+                x() + m_select_point->x + R,
+                y() + m_select_point->y + R,
+                Fl::event_x(), Fl::event_y()
+            );
     }
 
     int CanvasView::handle(int _event) {
@@ -79,6 +100,9 @@ namespace app {
     void CanvasView::move(ivec2 _pos) {
         auto old_hover_point = m_hover_point;
 
+        //================================================//
+        //              m_hover_point
+
         ivec2* near_point = nullptr;
         float min_distance = __FLT_MAX__;
 
@@ -101,7 +125,12 @@ namespace app {
         else 
             m_hover_point = nullptr;
 
-        if (m_hover_point != old_hover_point)
+        //================================================//
+
+        if (
+            m_hover_point != old_hover_point ||
+            m_select_point
+        )
             redraw();
     }
 }

@@ -10,12 +10,8 @@ namespace app {
     private:
     // data
         graph m_graph;
-    public:
-    // setters
-        void addPoint(ivec2);
-        void removePoint(ivec2*);
-        
-        void setLine(ivec2* from, ivec2* to);
+
+        friend class CanvasController;
     public:
     // getters
         graph::iterator begin();

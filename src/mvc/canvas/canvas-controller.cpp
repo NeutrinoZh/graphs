@@ -6,14 +6,51 @@ namespace app {
     }
 
     void CanvasController::addNewPoint(ivec2 _point) {
-        m_model->addPoint(_point);
+        logger()->debug() << "add new point:" << _point;
+
+        m_model->m_graph.insert(
+            std::make_pair(
+               new ivec2(_point),
+                vector<ivec2*>()
+            )
+        );
     }
 
     void CanvasController::setLine(ivec2* _from, ivec2* _to) {
-        m_model->setLine(_from, _to);
+        if (!_from || !_to)
+            return;
+        
+        if (_from == _to)
+            return;
+
+        logger()->debug() << "set line from " 
+            << *_from << " to " << *_to;
+
+        auto graph = &m_model->m_graph;
+
+        if (!containsElementInVector((*graph)[_from], _to))
+            (*graph)[_from].push_back(_to);
+
+        if (!containsElementInVector((*graph)[_to], _from))
+            (*graph)[_to].push_back(_from);
     }
 
     void CanvasController::removePoint(ivec2* _point) {
-        m_model->removePoint(_point);
+        if (!_point)
+            return;
+
+        logger()->debug() << "remove point " << *_point;
+
+        // delete point from map
+        m_model->m_graph.erase(_point); 
+
+        // delete all point references in graph
+        for (auto pair : *m_model) {
+            auto vec = &m_model->m_graph[pair.first];
+            auto it = std::find(vec->begin(), vec->end(), _point);
+
+            if (it != vec->end())
+                vec->erase(it);
+        }
     }   
 }

@@ -60,4 +60,9 @@ namespace app {
                 f();
         }
     };
+
+    template <typename Type>
+    bool containsElementInVector(vector<Type> vec, Type value) {
+        return std::find(vec.begin(), vec.end(), value) != vec.end();
+    }
 }
