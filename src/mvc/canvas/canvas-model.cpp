@@ -7,7 +7,7 @@ namespace app {
     void CanvasModel::addPoint(ivec2 _point) {;
         m_graph.insert(
             std::make_pair(
-               _point,
+               new ivec2(_point),
                 vector<ivec2*>()
             )
         );
@@ -16,8 +16,11 @@ namespace app {
     }
 
     void CanvasModel::removePoint(ivec2* _point) {
+        if (!_point)
+            return;
+
         // delete point from map
-        m_graph.erase(*_point); 
+        m_graph.erase(_point); 
 
         // delete all point references in graph
         for (auto pair : m_graph) {
@@ -32,6 +35,9 @@ namespace app {
     }
         
     void CanvasModel::setLine(ivec2* _from, ivec2* _to) {
+        if (!_from || !_to)
+            return;
+        
         if (_from == _to)
             return;
 
@@ -50,4 +56,10 @@ namespace app {
         return m_graph.end();
     }
     //==================================//
+
+    CanvasModel::~CanvasModel() {
+        for (auto pair : m_graph)
+            delete pair.first;
+        m_graph.clear();
+    }
 }

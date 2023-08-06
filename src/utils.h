@@ -1,14 +1,19 @@
 #include <iostream>
+
 #include <string>
+#include <sstream>
+
 #include <vector>
 #include <list>
 #include <map>
 #include <unordered_map>
-#include <algorithm>
 #include <bitset>
+
+#include <functional>
+#include <algorithm>
 #include <optional>
+
 #include <fstream>
-#include <sstream>
 #include <filesystem>
 
 #include <glm/glm.hpp>

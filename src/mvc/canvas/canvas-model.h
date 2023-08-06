@@ -4,7 +4,9 @@
 namespace app {
     class CanvasModel {
     public:
-        using graph = unordered_map<ivec2, vector<ivec2*>>;
+        using graph = unordered_map<ivec2*, vector<ivec2*>>;
+    
+        ~CanvasModel();
     private:
     // data
         graph m_graph;

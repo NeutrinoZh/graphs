@@ -7,13 +7,20 @@ namespace app {
     {
         m_model = _model;
         m_controller = _controller;
+
+        static CanvasView* view = this;
+        auto callback = []() {
+            view->redraw();
+        };
+
+        m_model->rc += callback;
     }
 
     void CanvasView::draw() {
         fl_rectf(x(), y(), w(), h(), FL_WHITE);
 
         for (auto pair : *m_model) {
-            auto point = &pair.first;
+            auto point = pair.first;
             if (m_hover_point == point)
                 fl_color(FL_BLUE);
             else 
@@ -30,7 +37,13 @@ namespace app {
     int CanvasView::handle(int _event) {
         switch (_event) {
         case FL_PUSH:
-            redraw();
+            push(Fl::event_button());
+            return 1;
+        case FL_MOVE:
+            move({
+                Fl::event_x() - x(),
+                Fl::event_y() - y()
+            });
             return 1;
         case FL_ENTER:
             return 1;
@@ -61,5 +74,34 @@ namespace app {
                 m_controller->removePoint(m_hover_point);
                 break;
         }
+    }
+
+    void CanvasView::move(ivec2 _pos) {
+        auto old_hover_point = m_hover_point;
+
+        ivec2* near_point = nullptr;
+        float min_distance = __FLT_MAX__;
+
+        for (auto pair : *m_model) {
+            auto point = pair.first;
+
+            float distance = glm::distance(
+                (vec2)*point,
+                (vec2)_pos
+            );
+
+            if (distance < min_distance) {
+                min_distance = distance;
+                near_point = (ivec2*)point;
+            }
+        }
+
+        if (min_distance < HOVER_R)
+            m_hover_point = near_point;
+        else 
+            m_hover_point = nullptr;
+
+        if (m_hover_point != old_hover_point)
+            redraw();
     }
 }

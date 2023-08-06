@@ -13,10 +13,12 @@ namespace app {
         int handle(int);
     private:
         static constexpr int R = 5;
+        static constexpr float HOVER_R = 20.f;
 
         ivec2* m_hover_point  = nullptr;
         ivec2* m_select_point = nullptr;
 
         void push(int);
+        void move(ivec2);
     };
 }
