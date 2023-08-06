@@ -16,8 +16,5 @@ namespace app {
     // getters
         graph::iterator begin();
         graph::iterator end();
-    public:
-    // reactions
-        action rc;
     };
 }

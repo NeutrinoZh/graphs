@@ -7,13 +7,6 @@ namespace app {
     {
         m_model = _model;
         m_controller = _controller;
-
-        static CanvasView* view = this;
-        auto callback = []() {
-            view->redraw();
-        };
-
-        m_model->rc += callback;
     }
 
     void CanvasView::draw() {
@@ -80,6 +73,8 @@ namespace app {
                     Fl::event_x() - x(),
                     Fl::event_y() - y()
                 });
+
+                redraw();
                 break;  
 
             case FL_LEFT_MOUSE:
@@ -89,10 +84,14 @@ namespace app {
                 } else {
                     m_select_point = m_hover_point;
                 }
+
+                redraw();
                 break;
 
             case FL_MIDDLE_MOUSE:
                 m_controller->removePoint(m_hover_point);
+
+                redraw();
                 break;
         }
     }
