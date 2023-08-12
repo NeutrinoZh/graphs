@@ -7,7 +7,7 @@ namespace app {
         CanvasModel* m_model = nullptr;
         CanvasController* m_controller = nullptr;
     public:
-        CanvasView(ivec2 position, ivec2 size, CanvasModel*, CanvasController*);
+        explicit CanvasView(ivec2 position, ivec2 size, CanvasModel*, CanvasController*);
     protected:
         void draw();
         int handle(int);

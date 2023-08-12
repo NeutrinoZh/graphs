@@ -43,6 +43,7 @@ using std::string;
 using std::vector;
 using std::map;
 using std::unordered_map;
+using std::unique_ptr;
 
 constexpr float PI = glm::pi<float>();
 
