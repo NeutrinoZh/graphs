@@ -77,5 +77,7 @@ namespace app {
             if (it != vec->end())
                 vec->erase(it);
         }
+
+        delete _point;
     }   
 }
