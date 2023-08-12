@@ -1,9 +1,34 @@
-#include "canvas-controlller.h"
+#include "canvas-view.h"
 
 namespace app {
-    CanvasController::CanvasController(CanvasModel* _model) {
-        m_model = _model;
+
+    //==================================================//
+    
+    CanvasController::CanvasController(ivec2 _w_size) {
+        logger()->info() << "Creating canvas object";
+
+        m_model = new CanvasModel();
+
+        const int offset = 25;
+        m_view = new CanvasView(
+            { 0, offset },
+            { _w_size.x, _w_size.y - offset },
+            m_model, this
+        );
     }
+
+    CanvasController::~CanvasController() {
+        logger()->info() << "Deleting canvas object";
+
+        delete m_model;
+        delete m_view;
+    }
+
+    Fl_Widget* CanvasController::gWidget() const {
+        return static_cast<Fl_Widget*>(m_view);
+    }
+
+    //==================================================//
 
     void CanvasController::addNewPoint(ivec2 _point) {
         logger()->debug() << "add new point:" << _point;

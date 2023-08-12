@@ -17,6 +17,7 @@ add_executable(${PROJECT_NAME}
     ./src/logger/LoggerMessage_2_of_2.cpp
 
     ./src/mvc/window/window-view.cpp
+    ./src/mvc/window/window-controller.cpp
 
     ./src/mvc/canvas/canvas-view.cpp
     ./src/mvc/canvas/canvas-model.cpp

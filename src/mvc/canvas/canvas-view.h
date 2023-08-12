@@ -1,4 +1,9 @@
-#include "mvc/canvas/canvas-model.h"
+#pragma once
+
+namespace app {
+    class CanvasView;
+}
+
 #include "mvc/canvas/canvas-controlller.h"
 
 namespace app {
