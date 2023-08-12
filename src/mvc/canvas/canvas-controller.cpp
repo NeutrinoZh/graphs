@@ -25,7 +25,7 @@ namespace app {
     }
 
     Fl_Widget* CanvasController::gWidget() const {
-        return static_cast<Fl_Widget*>(m_view);
+        return m_view;
     }
 
     //==================================================//

@@ -1,10 +1,5 @@
 #pragma once
-
-namespace app {
-    class CanvasView;
-}
-
-#include "mvc/canvas/canvas-controlller.h"
+#include "mvc/canvas/canvas-controller.h"
 
 namespace app {
     class CanvasView : public Fl_Widget {

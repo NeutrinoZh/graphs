@@ -1,5 +1,5 @@
 #include "mvc/window/window-view.h"
-#include "mvc/canvas/canvas-object.h"
+#include "mvc/canvas/canvas-controller.h"
 #include "mvc/toolbar/toolbar-controller.h"
 
 namespace app {

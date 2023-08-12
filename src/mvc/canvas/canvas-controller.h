@@ -5,7 +5,7 @@ namespace app {
     class CanvasController {
     private:
         CanvasModel* m_model;
-        CanvasView* m_view;
+        Fl_Widget* m_view;
     public:
         explicit CanvasController(ivec2 win_size);
         ~CanvasController();
