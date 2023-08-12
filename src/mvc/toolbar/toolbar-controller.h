@@ -1,18 +1,14 @@
-#include "toolbar-view.h"
+#include "application/application.h"
 
 namespace app {
     class ToolBarController {
     private:
-        unique_ptr<ToolbarView> m_view;
+        void* m_view;
     public:
-        explicit ToolBarController(int _win_width) {
-            m_view = unique_ptr<ToolbarView>(
-                new ToolbarView(_win_width)
-            );
-        }
+        explicit ToolBarController(int window_width);
+        
+        Fl_Widget* gWidget() const;
 
-        Fl_Widget* gWidget() const {
-            return m_view->getWidget();
-        }
+        void triangulation();
     };
 }
