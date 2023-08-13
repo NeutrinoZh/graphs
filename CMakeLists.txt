@@ -9,7 +9,6 @@ project(SoulDungeon)
 
 add_executable(${PROJECT_NAME}  
     ./src/main.cpp
-    ./src/application/application.cpp
 
     ./src/logger/Logger.cpp
     ./src/logger/LoggerColors.cpp

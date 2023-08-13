@@ -6,7 +6,7 @@ namespace app {
         Fl_Widget(_pos.x, _pos.y, _size.x, _size.y)  
     {
         m_model = _model;
-        m_controller = _controller;
+        m_controller = _controller; 
     }
 
     void CanvasView::draw() {

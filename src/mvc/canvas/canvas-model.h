@@ -1,5 +1,5 @@
 #pragma once
-#include "application/application.h"
+#include "logger/Logger.h"
 
 namespace app {
     class CanvasModel {
