@@ -7,7 +7,7 @@ namespace app {
         m_widget = new Fl_Menu_Bar(0, 0, _win_width, 25);
         m_widget->box(FL_BORDER_BOX);
 
-        m_widget->add("Edit/Triangulation", 0, (Fl_Callback*)[](Fl_Widget*, void* _view){
+        m_widget->add("Edit/Triangulation Convex Polygon", 0, (Fl_Callback*)[](Fl_Widget*, void* _view){
             static_cast<ToolbarView*>(_view)->triangulation();
         }, (void*)this);
     }

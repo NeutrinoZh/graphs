@@ -28,6 +28,10 @@ namespace app {
         return m_view;
     }
 
+    CanvasModel* CanvasController::gModel() const {
+        return m_model;
+    }
+
     //==================================================//
 
     void CanvasController::addNewPoint(ivec2 _point) {

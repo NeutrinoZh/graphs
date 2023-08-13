@@ -14,15 +14,23 @@ namespace app {
             // view
             m_view = new app::WindowView(m_model); 
 
+            // canvas 
             m_canvas = new CanvasController(m_model->gSize());
             m_view->addWidget(
                 m_canvas->gWidget()
             );
 
-            m_toolbar = new ToolBarController(m_model->gSize().x);
+            // toolbar 
+            m_toolbar = new ToolBarController(
+                m_model->gSize().x,
+                m_canvas, m_canvas->gModel()
+            );
+
             m_view->addWidget(
                 m_toolbar->gWidget()
             );
+
+            //
 
             //=========================================//
     }

@@ -11,6 +11,7 @@ namespace app {
         ~CanvasController();
         
         Fl_Widget* gWidget() const;
+        CanvasModel* gModel() const;
     public:
         void addNewPoint(ivec2);
         void removePoint(ivec2*);

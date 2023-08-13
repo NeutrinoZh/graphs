@@ -49,7 +49,7 @@ constexpr float PI = glm::pi<float>();
 
 namespace app {
     template <typename Type>
-    bool containsElementInVector(vector<Type> vec, Type value) {
+    inline bool containsElementInVector(vector<Type> vec, Type value) {
         return std::find(vec.begin(), vec.end(), value) != vec.end();
     }
 }
